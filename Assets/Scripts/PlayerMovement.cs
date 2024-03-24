@@ -5,8 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
+
+   [SerializeField]
    private float speed;
+   [SerializeField]
+   private float _rotationSpeed;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     private Vector2 _smoothedMovementInput; //Unity's Vector2 SmoothDamp Method.
@@ -43,13 +46,25 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
-    private void FixedUpdate(){
-            //Any changes to rigidbody reccomended to be made in FixedUpdate()
+    private void FixedUpdate(){//Any changes to rigidbody reccomended to be made in FixedUpdate()
+            SetPlayerVelocity();
+            RotateInDirectionOfInput();
+    }
 
+    private void RotateInDirectionOfInput(){ //Handles rotation of sprite during movement.
+    //Quaternion is a type specifically for rotation.
 
-            _smoothedMovementInput = Vector2.SmoothDamp(_smoothedMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-            //Object moves at 1 unit per second on the x axis, and 0.5 on the y axis.
-            _rigidbody.velocity = _smoothedMovementInput * speed; 
+        if(_movementInput != Vector2.zero){// check if player moving. then rotate in that direction.
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _smoothedMovementInput);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+            _rigidbody.MoveRotation(rotation);
+        }
+    }
+    private void SetPlayerVelocity(){ //Creates smooth & saemless movement when using WASD's
+        //Object moves at 1 unit per second on the x axis, and 0.5 on the y axis.
+        _smoothedMovementInput = Vector2.SmoothDamp(_smoothedMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);   
+         _rigidbody.velocity = _smoothedMovementInput * speed; 
     }
 
     private void OnMove(InputValue inputValue){//provided by installed Input System... UnityEngine.InputSystem
