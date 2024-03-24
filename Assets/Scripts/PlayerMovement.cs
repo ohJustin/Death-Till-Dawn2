@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
    private float speed;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
-    static public Player    S;  //Go to awake function.
+    private Vector2 _smoothedMovementInput; //Unity's Vector2 SmoothDamp Method.
+    private Vector2 _movementInputSmoothVelocity; //Keeps track of velocity to change. Go to fixedupdate.
+    static public PlayerMovement    S;  //Go to awake function.
     // Start is called before the first frame update
 
     void Awake(){ 
@@ -44,8 +46,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate(){
             //Any changes to rigidbody reccomended to be made in FixedUpdate()
 
+
+            _smoothedMovementInput = Vector2.SmoothDamp(_smoothedMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
             //Object moves at 1 unit per second on the x axis, and 0.5 on the y axis.
-            _rigidbody.velocity = _movementInput * speed; 
+            _rigidbody.velocity = _smoothedMovementInput * speed; 
     }
 
     private void OnMove(InputValue inputValue){//provided by installed Input System... UnityEngine.InputSystem
