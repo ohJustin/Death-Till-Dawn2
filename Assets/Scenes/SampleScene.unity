@@ -272,7 +272,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -10
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -493,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 7082775725177738042, guid: 4a137bfa49db710448213f2985583155, type: 3}
       propertyPath: _playerAwarenessDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082775725177738044, guid: 4a137bfa49db710448213f2985583155, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7082775725177738045, guid: 4a137bfa49db710448213f2985583155, type: 3}
       propertyPath: m_RootOrder
