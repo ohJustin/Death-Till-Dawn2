@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
-{
+{   
+    // Point of interest
     public Transform player; 
-    public Vector3 offset; // Offset between the camera and the player
+    // Offset between the camera and the player if we want.
+    public Vector3 offset;
 
     void FixedUpdate()
     {
