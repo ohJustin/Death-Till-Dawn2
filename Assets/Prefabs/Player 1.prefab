@@ -249,4 +249,4 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 718480216965157959, guid: 501ae7bdc8cfeab4cb72258f1bd03801, type: 3}
   _bulletSpeed: 8
   _gunOffset: {fileID: 656595283}
-  _timeBetweenShots: 0.5
+  _timeBetweenShots: 0.2
