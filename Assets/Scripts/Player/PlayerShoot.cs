@@ -6,60 +6,31 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject _bulletPrefab; // Player needs to be able to fire multiple bullets.
+    [SerializeField] protected GameObject _bulletPrefab; 
+    [SerializeField] protected float _bulletSpeed; 
+    [SerializeField] protected Transform _gunOffset;
+    [SerializeField] protected float _timeBetweenShots;
 
-    [SerializeField]
-    private float _bulletSpeed; // Adjust later with new weapons?
-
-    
-
-    [SerializeField]
-    private Transform _gunOffset;
-
-    [SerializeField]
-    private float _timeBetweenShots;
-
-    private bool _fireContinously;
-
-    private bool _fireSingle;
-    private float _lastFireTime;
-
+    protected float _lastFireTime;
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        if(_fireContinously || _fireSingle){
-            float timeSinceLastFire = Time.time - _lastFireTime; // Fix close shot bullets.
-
-            if(timeSinceLastFire >= _timeBetweenShots){
-
-            FireBullet();
-            _lastFireTime = Time.time;
-            _fireSingle = false;
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) // Check for left mouse button or spacebar press
+        {
+            if (Time.time - _lastFireTime >= _timeBetweenShots)
+            {
+                FireBullet();
+                _lastFireTime = Time.time;
             }
-
-        }
-
-
-        
-    }
-
-
-    private void OnFire(InputValue inputValue){
-        _fireContinously = inputValue.isPressed;
-
-        if(inputValue.isPressed){
-            _fireSingle = true;
         }
     }
 
-    private void FireBullet(){
+    private void FireBullet()
+    {
         GameObject bullet = Instantiate(_bulletPrefab, _gunOffset.position, transform.rotation);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-
         rigidbody.velocity = _bulletSpeed * transform.up;
     }
-
-
 }
+
