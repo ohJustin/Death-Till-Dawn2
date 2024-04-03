@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1035342261, guid: 0795c64a3294f9d45828cfc50cfbabad, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.13691282, g: 0.5660378, b: 0.029369887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 7082775725177738043}
   - component: {fileID: 7082775725177738042}
   - component: {fileID: 197301115773127947}
-  - component: {fileID: 7950696733888004089}
+  - component: {fileID: 1411416240524705602}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBoomer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7950696733888004089
+--- !u!114 &1411416240524705602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,11 +195,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7082775725177738047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432f6bec6e851754b901bb6bbf19a2ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b209f16901834446bfbb28d261d2588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
   enemyHealthBar: {fileID: 0}
+  poolPrefab: {fileID: 6497193963270031785, guid: b868389d59546104f9735d9a2228f298, type: 3}
 --- !u!1001 &2005005311573451778
 PrefabInstance:
   m_ObjectHideFlags: 0

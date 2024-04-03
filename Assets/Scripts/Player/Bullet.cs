@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     private Camera _camera;
 
+    [SerializeField]
+    private int bulletDmg = 1;
+
     private void Awake () {
         _camera = Camera.main;
     }
@@ -18,8 +21,13 @@ public class Bullet : MonoBehaviour
         if(collision.GetComponent<EnemyMovement>()){ 
 
             // If the collision obj in parameters has EnemyMovement, then its a zombie. So we can destroy it and the bullet.
-            Destroy(collision.gameObject); //Remove Enemy
-            Destroy(gameObject); // Remove Bullet
+
+            //I changed the bullet to dmg enemies using the new health system
+            collision.gameObject.GetComponent<EnemyBase>().TakeDmg(bulletDmg);
+            if(collision.gameObject.GetComponent<EnemyBase>().enemyHealth.Health == 0) {
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
 
         }
     }
