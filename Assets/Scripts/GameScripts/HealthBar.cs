@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
         healthSlider.value = health;
     }
 
-    void Start() {
+    void Awake() {
         healthSlider = GetComponent<Slider>();
     }
 }
