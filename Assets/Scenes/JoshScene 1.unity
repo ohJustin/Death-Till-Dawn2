@@ -135,18 +135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1346592951184548464, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1346592951184548464, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-      propertyPath: _timeBetweenShots
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758250550533958931, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4758250550533958953, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -291,11 +279,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &826857742 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 656595283, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-  m_PrefabInstance: {fileID: 433433354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,46 +500,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a137bfa49db710448213f2985583155, type: 3}
---- !u!1 &1980654617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4758250550533958959, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-  m_PrefabInstance: {fileID: 433433354}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1980654623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980654617}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a764b8cadfed444e9d4f38aff36164a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 718480216965157959, guid: 501ae7bdc8cfeab4cb72258f1bd03801, type: 3}
-  _bulletSpeed: 10
-  _gunOffset: {fileID: 826857742}
-  _timeBetweenShots: 0.125
---- !u!114 &1980654624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980654617}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d111b7a0b688c4e95054da99216cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 718480216965157959, guid: ea5c355a32771684a985f724ea40dd76, type: 3}
-  _bulletSpeed: 6
-  _gunOffset: {fileID: 826857742}
-  _timeBetweenShots: 0.5
-  _numBullets: 3
-  _spreadAngle: 30
-  _shotgunCooldown: 0.5
 --- !u!1001 &2067487424
 PrefabInstance:
   m_ObjectHideFlags: 0
