@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 70
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 0
@@ -198,8 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432f6bec6e851754b901bb6bbf19a2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4758250550533958959, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
   maxHealth: 3
+  dmg: 5
   enemyHealthBar: {fileID: 0}
+  gm: {fileID: 0}
 --- !u!1001 &2005005311573451778
 PrefabInstance:
   m_ObjectHideFlags: 0

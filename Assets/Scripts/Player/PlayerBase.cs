@@ -17,8 +17,18 @@ public class PlayerBase : MonoBehaviour
         playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(maxHealth);
     }
 
-    public void TakeDmg(int dmg) {
-        playerHealth.TakeDmg(dmg);
-        playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
+    
+
+
+     private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.GetComponent<EnemyMovement>()){ 
+            //We need to add tethering mechanisms to each zombie type, so that damage is specific.
+            int dmg = 1;
+            TakeDmg(dmg);
+        }
     }
+    public void TakeDmg(int dmg) {
+            playerHealth.TakeDmg(dmg);
+            playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
+        }
 }

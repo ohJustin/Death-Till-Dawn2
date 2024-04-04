@@ -7,9 +7,12 @@ public class EnemyBase : MonoBehaviour
 
     //started a base class for enemies that we can use to create future ones with the health system
 
+    public GameObject player;
     [SerializeField]
     protected int maxHealth = 3;
     public HealthSystem enemyHealth;
+    
+    public int dmg = 5;
     public HealthBar enemyHealthBar;
 
     public GameManager gm;
@@ -19,6 +22,8 @@ public class EnemyBase : MonoBehaviour
         enemyHealthBar.SetCurrHealth(enemyHealth.Health);
     }
 
+
+   
 
     // Start is called before the first frame update
     virtual protected void Start()
@@ -38,4 +43,7 @@ public class EnemyBase : MonoBehaviour
     {
         
     }
+
+
+
 }
