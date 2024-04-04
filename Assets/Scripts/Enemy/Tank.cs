@@ -9,4 +9,8 @@ public class Tank : EnemyBase
         maxHealth = 10;
         base.Start();
     }
+
+    override public void IncreaseDiff() {
+        gm.ScoreCounter += 2;
+    }
 }

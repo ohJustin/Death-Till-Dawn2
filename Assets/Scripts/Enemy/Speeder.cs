@@ -9,4 +9,8 @@ public class Speeder : EnemyBase
         maxHealth = 2;
         base.Start();
     }
+
+    override public void IncreaseDiff() {
+        gm.ScoreCounter += 2;
+    }
 }

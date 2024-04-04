@@ -14,7 +14,11 @@ public class Boomer : EnemyBase
         base.Start();
     }
 
-    void OnDestroy() {
+    override public void IncreaseDiff() {
+        gm.ScoreCounter += 3;
+    }
+
+    public void Boom() {
         GameObject obj = Instantiate(poolPrefab);
         obj.transform.position = gameObject.transform.position;
     }
