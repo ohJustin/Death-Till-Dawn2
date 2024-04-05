@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private Text score;
 
-    [SerializeField] private TextMeshProUGUI killCounterText;
+    [SerializeField] private TextMeshProUGUI scoreCounterText;
     [SerializeField] private TextMeshProUGUI timeText;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
@@ -24,16 +24,7 @@ public class GameManager : MonoBehaviour
         }
         set {
             scoreCounter = value;
-        }
-    }
-
-    public int KillCounter {
-        get {
-            return killCounter;
-        }
-        set {
-            killCounter = value;
-            UpdateKillUI();
+            UpdateScoreUI();
         }
     }
 
@@ -46,19 +37,19 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
         scoreCounter = 0;
-        score = gameObject.GetComponentInChildren<Text>();
-        killCounterText = GetComponentInChildren<TextMeshProUGUI>(); // Assuming the TextMeshPro component is a child of GameManager
-        timeText = GetComponentInChildren<TextMeshProUGUI>(); // Assuming the TextMeshPro component is a child of GameManager
+        // scoreCounterText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        scoreCounterText = GetComponentInChildren<TextMeshProUGUI>(); 
+        timeText = GetComponentInChildren<TextMeshProUGUI>();
         StartTimer(); // Start the timer coroutine
     }
 
     void Update() {
-        score.text = (scoreCounter * 10).ToString();
+        UpdateScoreUI();
     }
 
-    private void UpdateKillUI() {
+    private void UpdateScoreUI() {
         // Update Kill Counter UI
-        killCounterText.text = "Kills: " + killCounter.ToString();
+        scoreCounterText.text = "Score: " + (scoreCounter * 10).ToString();
     }
 
     // Method to increment the kill counter
