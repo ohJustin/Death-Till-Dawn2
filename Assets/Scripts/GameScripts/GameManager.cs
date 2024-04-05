@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         }
         scoreCounter = 0;
         // scoreCounterText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        scoreCounterText = GetComponentInChildren<TextMeshProUGUI>(); 
-        timeText = GetComponentInChildren<TextMeshProUGUI>();
+        //scoreCounterText = gameObject.GetComponentInChildren<TextMeshProUGUI>(); 
+        //timeText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         StartTimer(); // Start the timer coroutine
     }
 
