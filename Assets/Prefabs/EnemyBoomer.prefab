@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7082775725177738042}
   - component: {fileID: 197301115773127947}
   - component: {fileID: 1411416240524705602}
+  - component: {fileID: 925075464202039242}
   m_Layer: 0
   m_Name: EnemyBoomer
   m_TagString: Enemy
@@ -201,6 +202,27 @@ MonoBehaviour:
   maxHealth: 3
   enemyHealthBar: {fileID: 0}
   poolPrefab: {fileID: 6497193963270031785, guid: b868389d59546104f9735d9a2228f298, type: 3}
+--- !u!95 &925075464202039242
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082775725177738047}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2005005311573451778
 PrefabInstance:
   m_ObjectHideFlags: 0
