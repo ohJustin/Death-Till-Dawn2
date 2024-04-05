@@ -29,10 +29,14 @@ public class PlayerBase : MonoBehaviour
         }
     }
     public void TakeDmg(int dmg) {
-            playerHealth.TakeDmg(dmg);
-            playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
-            if (playerHealth.Health == 0) {
-                SceneManager.LoadScene(2);
-            }
+        playerHealth.TakeDmg(dmg);
+        playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
+        if (playerHealth.Health == 0) {
+            Invoke("DeathScreen", 2);
         }
+    }
+
+    public void DeathScreen() {
+        SceneManager.LoadScene(2);
+    }
 }
