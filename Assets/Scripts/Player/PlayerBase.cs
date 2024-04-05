@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -30,5 +31,8 @@ public class PlayerBase : MonoBehaviour
     public void TakeDmg(int dmg) {
             playerHealth.TakeDmg(dmg);
             playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
+            if (playerHealth.Health == 0) {
+                SceneManager.LoadScene(2);
+            }
         }
 }
