@@ -19,7 +19,7 @@ public class DeathMenu : MonoBehaviour
     // Restart game when restartBtn or restartBtnBack onClick is activated.
     public void RestartGame() {
         Debug.Log("RestartGame");
-        // SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 
 
