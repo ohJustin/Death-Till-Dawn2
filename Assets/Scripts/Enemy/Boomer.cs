@@ -20,7 +20,8 @@ public class Boomer : EnemyBase
 
     public void Boom() {
         GameObject obj = Instantiate(poolPrefab);
-        obj.transform.position = gameObject.transform.position;
+        Vector3 tempPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, obj.transform.position.z);
+        obj.transform.position = tempPos;
     }
 
 
