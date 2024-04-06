@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
         scoreCounter = 0;
 
-        gunIcon = GameObject.Find("PistolIcon");
+        gunIcon = GameObject.Find("Icon");
 
         // Initialize the array of gun scripts
         //gunScripts = new PlayerShoot[totalWeapons];
@@ -81,13 +81,11 @@ public class GameManager : MonoBehaviour
 
     void SwitchToNextWeapon() {
         int temp_index = (currentWeaponIndex + 1) % totalWeapons;
-        // currentWeaponIndex = (currentWeaponIndex + 1) % totalWeapons;
         SwitchWeapon(temp_index);
     }
 
     void SwitchToPreviousWeapon() {
         int temp_index = (currentWeaponIndex - 1 + totalWeapons) % totalWeapons;
-        // currentWeaponIndex = (currentWeaponIndex - 1 + totalWeapons) % totalWeapons;
         SwitchWeapon(temp_index);
     }
 
@@ -99,14 +97,9 @@ public class GameManager : MonoBehaviour
         
         // Activate the new gun script
         currentWeaponIndex = index;
-        gunIcon.GetComponent<Image>().sprite = gunScripts[currentWeaponIndex].icon;        //CHANGE HEREHERHERHEHREHREHRHERHERH
+        gunIcon.GetComponent<Image>().sprite = gunScripts[currentWeaponIndex].icon;
         gunScripts[currentWeaponIndex].enabled = true;
 
-    }
-
-    private void UpdateWeaponUI() {
-        //icon = gameObject.GetComponentInChildren<Icon>;
-        icon = GameObject.Find("Icon").GetComponent<Image>().sprite;
     }
 
     private void UpdateScoreUI() {

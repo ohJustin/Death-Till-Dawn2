@@ -270,7 +270,7 @@ MonoBehaviour:
   _timeBetweenShots: 0.3
   magazineCount: 6
   magazineSize: 17
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3131695212780dd449347cc66992c189, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
 --- !u!114 &1980654623
@@ -291,7 +291,7 @@ MonoBehaviour:
   _timeBetweenShots: 0.125
   magazineCount: 4
   magazineSize: 35
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0933448569a971440abcc39c95b1bae8, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
 --- !u!114 &1980654624
@@ -312,7 +312,7 @@ MonoBehaviour:
   _timeBetweenShots: 0.5
   magazineCount: 0
   magazineSize: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3d6c291d7c427b049ade90973ae2defc, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
   _numBullets: 3
