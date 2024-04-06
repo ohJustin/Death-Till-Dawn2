@@ -14,6 +14,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] protected float _timeBetweenShots;
     [SerializeField] protected int magazineCount;
     [SerializeField] protected int magazineSize;
+
+    [SerializeField] public Sprite icon;                           //CHANGE HEREHERHERHEHREHREHRHERHERH
     [SerializeField] protected TextMeshProUGUI magazineSizeText;
     [SerializeField] protected TextMeshProUGUI magazineCountText;
 

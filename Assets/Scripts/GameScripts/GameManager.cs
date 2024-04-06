@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private int currentWeaponIndex;
     private Sprite icon;
 
+    private GameObject gunIcon;
+
     // Array to hold references to gun scripts
     private PlayerShoot[] gunScripts; 
 
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
         scoreCounter = 0;
+
+        gunIcon = GameObject.Find("PistolIcon");
 
         // Initialize the array of gun scripts
         //gunScripts = new PlayerShoot[totalWeapons];
@@ -92,9 +96,10 @@ public class GameManager : MonoBehaviour
         if (gunScripts[currentWeaponIndex] != null) {
             gunScripts[currentWeaponIndex].enabled = false;
         }
-
+        
         // Activate the new gun script
         currentWeaponIndex = index;
+        gunIcon.GetComponent<Image>().sprite = gunScripts[currentWeaponIndex].icon;        //CHANGE HEREHERHERHEHREHREHRHERHERH
         gunScripts[currentWeaponIndex].enabled = true;
 
     }
