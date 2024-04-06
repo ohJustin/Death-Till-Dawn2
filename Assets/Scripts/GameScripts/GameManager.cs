@@ -48,12 +48,13 @@ public class GameManager : MonoBehaviour
         }
         scoreCounter = 0;
 
-        gunIcon = GameObject.Find("Icon");
+        gunIcon = GameObject.FindGameObjectWithTag("GUN");
+
+        currentWeaponIndex = 0;
 
         // Initialize the array of gun scripts
         //gunScripts = new PlayerShoot[totalWeapons];
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(player);
 
         gunScripts = new PlayerShoot[3];
         
