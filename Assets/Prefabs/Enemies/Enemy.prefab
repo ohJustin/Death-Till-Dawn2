@@ -181,7 +181,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -232,6 +232,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7082775725177738045}
     m_Modifications:
+    - target: {fileID: 8761796280612691965, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8761796280612691966, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -351,6 +355,18 @@ PrefabInstance:
     - target: {fileID: 8761796280697439203, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761796280697439203, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761796281908604210, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761796282219149851, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
