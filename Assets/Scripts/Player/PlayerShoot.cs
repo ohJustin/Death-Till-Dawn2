@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -10,8 +12,14 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] protected float _bulletSpeed; 
     [SerializeField] protected Transform _gunOffset;
     [SerializeField] protected float _timeBetweenShots;
+    [SerializeField] protected int magazineCount;
+    [SerializeField] protected int magazineSize;
+    [SerializeField] protected TextMeshProUGUI magazineSizeText;
+    [SerializeField] protected TextMeshProUGUI magazineCountText;
 
     protected float _lastFireTime;
+
+
 
     // Update is called once per frame
     protected virtual void Update()
@@ -26,11 +34,12 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    private void FireBullet()
+    protected void FireBullet()
     {
         GameObject bullet = Instantiate(_bulletPrefab, _gunOffset.position, transform.rotation);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
         rigidbody.velocity = _bulletSpeed * transform.up;
     }
+
 }
 

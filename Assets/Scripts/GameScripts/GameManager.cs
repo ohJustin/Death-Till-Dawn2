@@ -8,13 +8,21 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    private GameObject player;
     private int scoreCounter = 0;
     private int killCounter = 0;
+    // Can changed based on number of guns starting with
+    private int totalWeapons = 3;
+    // Current weapon that is selected
+    private int currentWeaponIndex;
+    private Sprite icon;
 
-    private Text score;
+    // Array to hold references to gun scripts
+    private PlayerShoot[] gunScripts; 
 
     [SerializeField] private TextMeshProUGUI scoreCounterText;
     [SerializeField] private TextMeshProUGUI timeText;
+    //[SerializeField] private WeaponUI weaponUI;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
 
@@ -37,14 +45,63 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
         scoreCounter = 0;
-        // scoreCounterText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        //scoreCounterText = gameObject.GetComponentInChildren<TextMeshProUGUI>(); 
-        //timeText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        StartTimer(); // Start the timer coroutine
+
+        // Initialize the array of gun scripts
+        //gunScripts = new PlayerShoot[totalWeapons];
+        player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player);
+
+        gunScripts = new PlayerShoot[3];
+        
+        // Add references to the different gun scripts
+        gunScripts[0] = player.GetComponent<PlayerShoot>();
+        gunScripts[1] = player.GetComponent<MachineGun>();
+        gunScripts[2] = player.GetComponent<ShotGun>();
+
+        // Set the pistol as the current weapon initially
+        SwitchWeapon(0);
+
+        StartTimer(); // Start the timer
     }
 
     void Update() {
         UpdateScoreUI();
+        // Check for input to switch weapons
+        if (Input.GetKeyDown(KeyCode.E)) {
+            SwitchToNextWeapon();
+        }
+        else if (Input.GetKeyDown(KeyCode.Q)) {
+            SwitchToPreviousWeapon();
+        }
+    }
+
+    void SwitchToNextWeapon() {
+        int temp_index = (currentWeaponIndex + 1) % totalWeapons;
+        // currentWeaponIndex = (currentWeaponIndex + 1) % totalWeapons;
+        SwitchWeapon(temp_index);
+    }
+
+    void SwitchToPreviousWeapon() {
+        int temp_index = (currentWeaponIndex - 1 + totalWeapons) % totalWeapons;
+        // currentWeaponIndex = (currentWeaponIndex - 1 + totalWeapons) % totalWeapons;
+        SwitchWeapon(temp_index);
+    }
+
+    void SwitchWeapon(int index) {
+        // Deactivate the current gun script
+        if (gunScripts[currentWeaponIndex] != null) {
+            gunScripts[currentWeaponIndex].enabled = false;
+        }
+
+        // Activate the new gun script
+        currentWeaponIndex = index;
+        gunScripts[currentWeaponIndex].enabled = true;
+
+    }
+
+    private void UpdateWeaponUI() {
+        //icon = gameObject.GetComponentInChildren<Icon>;
+        icon = GameObject.Find("Icon").GetComponent<Image>().sprite;
     }
 
     private void UpdateScoreUI() {
