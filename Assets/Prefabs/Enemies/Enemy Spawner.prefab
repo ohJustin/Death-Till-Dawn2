@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnTime: 3
   _maxSpawnTime: 6
-  killDifficultyCount: 40
+  killDifficultyCount: 20
   _enemyPrefabs:
   - {fileID: 7082775725177738047, guid: 4a137bfa49db710448213f2985583155, type: 3}
   - {fileID: 7082775725177738047, guid: e226944472483984ebde50396af39753, type: 3}

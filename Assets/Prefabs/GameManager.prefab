@@ -1212,3 +1212,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCounterText: {fileID: 1931416422}
   timeText: {fileID: 995465521}
+  magazineSizeText: {fileID: 781791846}
+  magazineCountText: {fileID: 298758834}

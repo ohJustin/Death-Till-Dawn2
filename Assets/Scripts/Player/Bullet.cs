@@ -36,6 +36,9 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
 
         }
+        else if(collision.gameObject.tag == "Wall") {
+            Destroy(gameObject);
+        }
     }
 
     private void DestroyWhenOffScreen() {

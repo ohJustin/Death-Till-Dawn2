@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreCounterText;
     [SerializeField] private TextMeshProUGUI timeText;
+
+    [SerializeField] private TextMeshProUGUI magazineSizeText;
+    [SerializeField] private TextMeshProUGUI magazineCountText;
     //[SerializeField] private WeaponUI weaponUI;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        //UpdateAmmo();
         if (gameManager != null && gameManager != this) {
             Destroy(this.gameObject);
         }
@@ -56,6 +60,8 @@ public class GameManager : MonoBehaviour
         //gunScripts = new PlayerShoot[totalWeapons];
         player = GameObject.FindGameObjectWithTag("Player");
 
+        //Debug.Log(player);
+
         gunScripts = new PlayerShoot[3];
         
         // Add references to the different gun scripts
@@ -63,14 +69,23 @@ public class GameManager : MonoBehaviour
         gunScripts[1] = player.GetComponent<MachineGun>();
         gunScripts[2] = player.GetComponent<ShotGun>();
 
+        // for(int i = 0; i < 3; i++) {
+        //     Debug.Log(gunScripts[i]);
+        // }
+        // for(int i = 0; i < 3; i++) {
+        //     Debug.Log(gunScripts[i].icon);
+        // }
+
         // Set the pistol as the current weapon initially
-        SwitchWeapon(0);
+        //SwitchWeapon(0);
 
         StartTimer(); // Start the timer
     }
 
     void Update() {
         UpdateScoreUI();
+        UpdateAmmo();
+        //UpdateAmmo();
         // Check for input to switch weapons
         if (Input.GetKeyDown(KeyCode.E)) {
             SwitchToNextWeapon();
@@ -100,6 +115,7 @@ public class GameManager : MonoBehaviour
         currentWeaponIndex = index;
         gunIcon.GetComponent<Image>().sprite = gunScripts[currentWeaponIndex].icon;
         gunScripts[currentWeaponIndex].enabled = true;
+        UpdateAmmo();
 
     }
 
@@ -138,6 +154,17 @@ public class GameManager : MonoBehaviour
         int minutes = Mathf.FloorToInt((timer % 3600) / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
         timeText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+    }
+
+    private void UpdateAmmo() {
+        if(currentWeaponIndex == 0) {
+            magazineCountText.text = "∞";
+            magazineSizeText.text = gunScripts[0].ammoInClip.ToString();
+        }
+        else {
+            magazineCountText.text = gunScripts[currentWeaponIndex].ammoLeftTotal.ToString();
+            magazineSizeText.text = gunScripts[currentWeaponIndex].ammoInClip.ToString();
+        }
     }
 }
 

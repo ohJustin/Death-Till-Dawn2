@@ -14,11 +14,12 @@ public class ShotGun : PlayerShoot
     protected override void Update()
     {
         // Check for shotgun input
-        if (IsFireButtonDown() && _canFire)
+        if (IsFireButtonDown() && _canFire && haveAmmo)
         {
             Fire();
             _canFire = false;
             Invoke("ResetFire", _shotgunCooldown); // Reset fire after cooldown
+            UpdateAmmo();
         }
     }
 

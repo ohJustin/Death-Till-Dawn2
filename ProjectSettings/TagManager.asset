@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - GUN
+  - Wall
   layers:
   - Default
   - TransparentFX
