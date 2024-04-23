@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1196275359}
   - component: {fileID: 6082675585361893}
   - component: {fileID: 6682768454643511785}
+  - component: {fileID: 660681142}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -256,10 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  deathWait: 0.5
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6682768454643511785}
+      - m_Target: {fileID: 660681142}
         m_TargetAssemblyTypeName: InvincibilityController, Assembly-CSharp
         m_MethodName: StartInvincibility
         m_Mode: 4
@@ -267,7 +269,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 3
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -372,6 +374,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invincibilityDuration: 0
 --- !u!114 &6682768454643511785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758250550533958959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0bcb93f54dc274fa99b12f2e624993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &660681142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

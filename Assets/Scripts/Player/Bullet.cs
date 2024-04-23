@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
 
             //I changed the bullet to dmg enemies using the new health system
             collision.gameObject.GetComponent<EnemyBase>().TakeDmg(bulletDmg);
-            if(collision.gameObject.GetComponent<EnemyBase>().enemyHealth.Health <= 0) {
+            if(collision.gameObject.GetComponent<EnemyBase>().enemyHealth.Health <= 0 && !collision.gameObject.GetComponent<EnemyBase>().dead) {
+                collision.gameObject.GetComponent<EnemyBase>().dead = true;
                 if(collision.gameObject.GetComponent<Boomer>()) {
                     collision.gameObject.GetComponent<Boomer>().Boom();
                 }

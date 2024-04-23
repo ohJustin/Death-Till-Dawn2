@@ -17,6 +17,8 @@ public class EnemyBase : MonoBehaviour
 
     public GameManager gm;
 
+    public bool dead = false;
+
     public void TakeDmg(int dmg) {
         enemyHealth.TakeDmg(dmg);
         enemyHealthBar.SetCurrHealth(enemyHealth.Health);

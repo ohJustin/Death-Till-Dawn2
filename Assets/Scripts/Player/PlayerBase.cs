@@ -8,6 +8,8 @@ public class PlayerBase : MonoBehaviour
 {
     [SerializeField]
     protected int maxHealth = 10;
+    [SerializeField]
+    protected float deathWait = .5f;
     public HealthSystem playerHealth;
 
     private GameObject playerHealthBar;
@@ -43,7 +45,7 @@ public class PlayerBase : MonoBehaviour
         playerHealth.TakeDmg(dmg);
         playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
         if (playerHealth.Health == 0) {
-            Invoke("DeathScreen", 2);
+            Invoke("DeathScreen", deathWait);
         }else{
             OnDamaged.Invoke();
         }
