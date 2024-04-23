@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerBase : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlayerBase : MonoBehaviour
     public HealthSystem playerHealth;
 
     private GameObject playerHealthBar;
+
+    public UnityEvent OnDamaged;
+    public bool isInvincible {get; set;}
 
     void Start() {
         playerHealth = new HealthSystem(maxHealth, maxHealth);
@@ -28,11 +32,20 @@ public class PlayerBase : MonoBehaviour
             TakeDmg(dmg);
         }
     }
+
+
     public void TakeDmg(int dmg) {
+        if(isInvincible){
+            return;
+        }
+
+
         playerHealth.TakeDmg(dmg);
         playerHealthBar.GetComponentInChildren<HealthBar>().SetCurrHealth(playerHealth.Health);
         if (playerHealth.Health == 0) {
             Invoke("DeathScreen", 2);
+        }else{
+            OnDamaged.Invoke();
         }
     }
 
