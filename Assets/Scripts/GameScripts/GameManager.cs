@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI magazineSizeText;
     [SerializeField] private TextMeshProUGUI magazineCountText;
+
+    [SerializeField] private Button qButton;
+    [SerializeField] private Button eButton;
+
     //[SerializeField] private WeaponUI weaponUI;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
@@ -85,13 +89,35 @@ public class GameManager : MonoBehaviour
     void Update() {
         UpdateScoreUI();
         UpdateAmmo();
-        //UpdateAmmo();
+   
         // Check for input to switch weapons
         if (Input.GetKeyDown(KeyCode.E)) {
             SwitchToNextWeapon();
         }
         else if (Input.GetKeyDown(KeyCode.Q)) {
             SwitchToPreviousWeapon();
+        }
+
+        // Update button opacity
+        UpdateButtonOpacity(KeyCode.E, eButton);
+        UpdateButtonOpacity(KeyCode.Q, qButton);
+    }
+
+     private void UpdateButtonOpacity(KeyCode keyCode, Button button)
+    {
+        if (Input.GetKeyDown(keyCode))
+        {
+            // Key is pressed, change opacity to 1
+            Color buttonColor = button.image.color;
+            buttonColor.a = 1f;
+            button.image.color = buttonColor;
+        }
+        else if (Input.GetKeyUp(keyCode))
+        {
+            // Key is released, change opacity back to 0.5 (or any other desired value)
+            Color buttonColor = button.image.color;
+            buttonColor.a = 0.5f;
+            button.image.color = buttonColor;
         }
     }
 
