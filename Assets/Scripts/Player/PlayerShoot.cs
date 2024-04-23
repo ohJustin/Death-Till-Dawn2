@@ -35,7 +35,8 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) // Check for left mouse button or spacebar press
+
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) // Check for left mouse button or spacebar press
         {
             if (Time.time - _lastFireTime >= _timeBetweenShots && haveAmmo)
             {

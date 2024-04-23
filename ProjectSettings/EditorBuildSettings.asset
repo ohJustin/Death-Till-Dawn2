@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 9e2ad165de492e244a0dbbf22c9035dc
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/ZachScene.unity
     guid: bb6e806cd82e9084a969be608e8545f2
   - enabled: 1
     path: Assets/Scenes/Menus/DeathMenu.unity

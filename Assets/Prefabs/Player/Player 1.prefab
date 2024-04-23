@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1346592951184548464}
   - component: {fileID: 1980654623}
   - component: {fileID: 1980654624}
+  - component: {fileID: 1196275359}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -325,6 +326,21 @@ MonoBehaviour:
   _numBullets: 3
   _spreadAngle: 30
   _shotgunCooldown: 0.5
+--- !u!114 &1196275359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758250550533958959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3089237432ce44b815ba7a65ffa340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 4758250550533958953}
+  rotationSpeed: 5
+  firePoint: {fileID: 656595282}
 --- !u!1001 &1397056603
 PrefabInstance:
   m_ObjectHideFlags: 0
