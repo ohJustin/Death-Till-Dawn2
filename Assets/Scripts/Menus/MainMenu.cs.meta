@@ -3,7 +3,13 @@ guid: e166b54bec19908409fd2eac9d41d67f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - optionsWindow: {fileID: 2178097566376116171, guid: 84d46d7df3b9a0d42ba5f0b8c2065050, type: 3}
+  - exitBtn: {instanceID: 0}
+  - restartBtn: {instanceID: 0}
+  - CntrlsBtn: {instanceID: 0}
+  - Aboutbtn: {instanceID: 0}
+  - messageText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
