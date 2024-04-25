@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] protected float _timeBetweenShots;
     [SerializeField] public int ammoLeftTotal;
     [SerializeField] public int ammoInClip;
+    [SerializeField] AudioSource pistolAudio;
 
     [SerializeField] protected int magazineSize;
 
@@ -40,6 +41,7 @@ public class PlayerShoot : MonoBehaviour
         {
             if (Time.time - _lastFireTime >= _timeBetweenShots && haveAmmo)
             {
+                pistolAudio.Play();
                 FireBullet();
                 _lastFireTime = Time.time;
             }

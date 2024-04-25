@@ -8,14 +8,15 @@ public class ShotGun : PlayerShoot
     [SerializeField] private int _numBullets = 3; // Number of bullets to shoot
     [SerializeField] private float _spreadAngle = 30f; // Angle of bullet spread
     [SerializeField] private float _shotgunCooldown = 0.5f; // Cooldown period for the shotgun
-
+    [SerializeField] AudioSource shotgunAudio;
     private bool _canFire = true;
 
     protected override void Update()
     {
         // Check for shotgun input
         if (IsFireButtonDown() && _canFire && haveAmmo)
-        {
+        {   
+            shotgunAudio.Play();
             Fire();
             _canFire = false;
             Invoke("ResetFire", _shotgunCooldown); // Reset fire after cooldown

@@ -7,7 +7,7 @@ public class MachineGun : PlayerShoot
 {
     private bool _fireContinously;
     private bool _fireSingle;
-
+    [SerializeField] AudioSource machineGunAudio;
 
     // Update is called once per frame
     protected override void Update()
@@ -15,7 +15,8 @@ public class MachineGun : PlayerShoot
         if(_fireContinously && haveAmmo){
             float timeSinceLastFire = Time.time - _lastFireTime; // Fix close shot bullets.
 
-            if(timeSinceLastFire >= _timeBetweenShots){
+            if(timeSinceLastFire >= _timeBetweenShots) {
+                machineGunAudio.Play();
                 FireBullet();
                 _lastFireTime = Time.time;
                 //_fireSingle = false;
@@ -26,7 +27,6 @@ public class MachineGun : PlayerShoot
 
     private void OnFire(InputValue inputValue){
         _fireContinously = inputValue.isPressed;
-
         // if(inputValue.isPressed){
         //     _fireSingle = true;
         // }
