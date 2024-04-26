@@ -20,6 +20,7 @@ public class EnemyBase : MonoBehaviour
     public bool dead = false;
 
     public void TakeDmg(int dmg) {
+        enemyHealthBar.GetComponentInParent<Canvas>().enabled = true;
         enemyHealth.TakeDmg(dmg);
         enemyHealthBar.SetCurrHealth(enemyHealth.Health);
     }
@@ -34,6 +35,7 @@ public class EnemyBase : MonoBehaviour
         enemyHealth = new HealthSystem(maxHealth, maxHealth);
         enemyHealthBar = gameObject.GetComponentInChildren<HealthBar>();
         enemyHealthBar.SetMaxHealth(maxHealth);
+        enemyHealthBar.GetComponentInParent<Canvas>().enabled = false;
     }
 
     virtual public void IncreaseDiff() {

@@ -36,11 +36,20 @@ public class PlayerShoot : MonoBehaviour
     protected float startTime;
     protected bool isReloading;
 
+    protected GameManager gm;
+
+    void Start() {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
 
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        if(gm.isPaused == true) {
+            return;
+        }
 
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) // Check for left mouse button or spacebar press
         {

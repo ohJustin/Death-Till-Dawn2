@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 1
   dmgTime: 0.5
-  lifeTime: 2.5
+  lifeTime: 3.5
 --- !u!58 &1938945989
 CircleCollider2D:
   m_ObjectHideFlags: 0

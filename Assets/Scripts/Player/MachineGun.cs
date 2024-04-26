@@ -12,6 +12,9 @@ public class MachineGun : PlayerShoot
     // Update is called once per frame
     protected override void Update()
     {
+        if(gm.isPaused == true) {
+            return;
+        }
         if(_fireContinously && haveAmmo){
             float timeSinceLastFire = Time.time - _lastFireTime; // Fix close shot bullets.
 
