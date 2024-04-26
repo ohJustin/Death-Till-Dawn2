@@ -25,6 +25,10 @@ public class MachineGun : PlayerShoot
                 //_fireSingle = false;
             }
         }
+        if (haveAmmo == false) {
+            UpdateButtonOpacity(KeyCode.R, rButton);
+            Reload();
+        }
     }
 
 

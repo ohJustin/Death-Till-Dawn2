@@ -25,6 +25,11 @@ public class ShotGun : PlayerShoot
             Invoke("ResetFire", _shotgunCooldown); // Reset fire after cooldown
             UpdateAmmo();
         }
+        
+        if (haveAmmo == false) {
+            UpdateButtonOpacity(KeyCode.R, rButton);
+            Reload();
+        }
     }
 
     private void ResetFire()
