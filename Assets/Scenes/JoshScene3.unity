@@ -4306,10 +4306,6 @@ PrefabInstance:
       propertyPath: pistolAudio
       value: 
       objectReference: {fileID: 1143523409984103201}
-    - target: {fileID: 4758250550533958935, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard&Mouse
-      objectReference: {fileID: 0}
     - target: {fileID: 4758250550533958953, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
       propertyPath: m_RootOrder
       value: 2

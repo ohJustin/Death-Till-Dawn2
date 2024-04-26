@@ -210,7 +210,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -297,6 +297,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3131695212780dd449347cc66992c189, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
+  reloadText: {fileID: 0}
+  rButton: {fileID: 0}
+  rText: {fileID: 0}
 --- !u!114 &1980654623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +324,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 0933448569a971440abcc39c95b1bae8, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
+  reloadText: {fileID: 0}
+  rButton: {fileID: 0}
+  rText: {fileID: 0}
   machineGunAudio: {fileID: 0}
 --- !u!114 &1980654624
 MonoBehaviour:
@@ -346,6 +352,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3d6c291d7c427b049ade90973ae2defc, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
+  reloadText: {fileID: 0}
+  rButton: {fileID: 0}
+  rText: {fileID: 0}
   _numBullets: 3
   _spreadAngle: 30
   _shotgunCooldown: 0.5
