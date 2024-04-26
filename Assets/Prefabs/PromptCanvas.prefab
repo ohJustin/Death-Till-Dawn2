@@ -465,6 +465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsWindow: {fileID: 1508335011494079080}
+  aboutWindow: {fileID: 0}
+  pauseWindow: {fileID: 0}
   messageText: {fileID: 1508335012515090825}
 --- !u!1 &1508335013218865868
 GameObject:

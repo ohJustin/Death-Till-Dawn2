@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Button qButton;
     [SerializeField] private Button eButton;
-
+    public GameObject pauseWindow;
     //[SerializeField] private WeaponUI weaponUI;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
@@ -43,6 +43,14 @@ public class GameManager : MonoBehaviour
             scoreCounter = value;
             UpdateScoreUI();
         }
+    }
+
+
+
+    void Start()
+    {
+      //optionsWindow = GameObject.Find("OptionsWindow");
+      pauseWindow.SetActive(false);
     }
 
     void Awake()
@@ -87,6 +95,24 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(pauseWindow.activeInHierarchy == false){
+                Debug.Log("Escape key was pressed");
+                pauseWindow.SetActive(true);
+                Time.timeScale = 0f; // Paused Game.
+            }else{
+                Debug.Log("Escape key was pressed");
+                pauseWindow.SetActive(false);
+                Time.timeScale = 1f; // Paused Game.
+            }
+        }
+        
+
+
+        
+
+
         UpdateScoreUI();
         UpdateAmmo();
    
