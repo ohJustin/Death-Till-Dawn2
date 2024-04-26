@@ -25,11 +25,16 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI magazineSizeText;
     [SerializeField] protected TextMeshProUGUI magazineCountText;
 
+    [SerializeField] protected TextMeshProUGUI reloadText;
+    [SerializeField] protected Button rButton;
+    [SerializeField] protected TextMeshProUGUI rText;
+
     protected float _lastFireTime;
 
     protected bool haveAmmo = true;
 
     protected float startTime;
+    protected bool isReloading;
 
 
 
@@ -45,6 +50,10 @@ public class PlayerShoot : MonoBehaviour
                 FireBullet();
                 _lastFireTime = Time.time;
             }
+        }
+        if (haveAmmo == false) {
+            UpdateButtonOpacity(KeyCode.R, rButton);
+            Reload();
         }
     }
 
@@ -62,25 +71,78 @@ public class PlayerShoot : MonoBehaviour
             haveAmmo = false;
             return;
         }
-        if (ammoInClip == 0) {
-            startTime = Time.time;
+        else if (ammoInClip == 0) {
             haveAmmo = false;
-            Reload();
         }
     }
 
     protected void Reload() {
-        if(Time.time - startTime > reloadTime) {
-            haveAmmo = true;
-            ammoInClip = magazineSize;
-            ammoLeftTotal -= magazineSize;
-            return;
+        // Call ReloadPopUp function
+        ReloadPopUp(reloadText, rButton, rText);
+        if(Input.GetKeyDown(KeyCode.R) && !isReloading) {
+            isReloading = true;
+            startTime = Time.time;
+            Debug.Log("Player is now reloading...");
         }
-        else {
-            Invoke("Reload", .1f);
+        if (isReloading) {
+            if (Time.time - startTime > reloadTime) {
+                haveAmmo = true;
+                ammoInClip = magazineSize;
+                ammoLeftTotal -= magazineSize;
+                isReloading = false;
+                ReloadPopUp(reloadText, rButton, rText);
+            }
+
+        }
+
+    }
+
+
+    protected void ReloadPopUp(TextMeshProUGUI text, Button button, TextMeshProUGUI textButton)
+    {
+        if (haveAmmo == false)
+        {
+            // Out of Ammo, Show user Reload PopUp
+            // Make text visible
+            text.color = new Color32(255, 0, 0, 255);
+            // Make button visible
+            Color buttonColor = button.image.color;
+            buttonColor.a = 0.5f;
+            button.image.color = buttonColor;
+            // Make button text visible
+            textButton.color = new Color32(255, 0, 0, 255);
+        }
+        else if (haveAmmo == true)
+        {
+            // Ammo is now full
+            // Make text disappear
+            text.color = new Color32(255, 0, 0, 0);
+            // Make Button disappear
+            Color buttonColor = button.image.color;
+            buttonColor.a = 0f;
+            button.image.color = buttonColor;
+            // Make button text disappear
+            textButton.color = new Color32(255, 0, 0, 0);
         }
     }
 
+    protected void UpdateButtonOpacity(KeyCode keyCode, Button button)
+    {
+        if (Input.GetKeyDown(keyCode))
+        {
+            // Key is pressed, change opacity to 1
+            Color buttonColor = button.image.color;
+            buttonColor.a = 1f;
+            button.image.color = buttonColor;
+        }
+        else if (Input.GetKeyUp(keyCode))
+        {
+            // Key is released, change opacity back to 0.5 (or any other desired value)
+            Color buttonColor = button.image.color;
+            buttonColor.a = 0.5f;
+            button.image.color = buttonColor;
+        }
+    }
 
 }
 

@@ -109,10 +109,6 @@ public class GameManager : MonoBehaviour
         }
         
 
-
-        
-
-
         UpdateScoreUI();
         UpdateAmmo();
    
@@ -129,7 +125,7 @@ public class GameManager : MonoBehaviour
         UpdateButtonOpacity(KeyCode.Q, qButton);
     }
 
-     private void UpdateButtonOpacity(KeyCode keyCode, Button button)
+    private void UpdateButtonOpacity(KeyCode keyCode, Button button)
     {
         if (Input.GetKeyDown(keyCode))
         {
