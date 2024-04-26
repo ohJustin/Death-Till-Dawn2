@@ -1019,6 +1019,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1307275101, guid: 33fbbac2d786a77438c5789968c4fb2f, type: 3}
+      propertyPath: m_TagString
+      value: Reload
+      objectReference: {fileID: 0}
     - target: {fileID: 4445128951687414884, guid: 33fbbac2d786a77438c5789968c4fb2f, type: 3}
       propertyPath: m_RootOrder
       value: 5
