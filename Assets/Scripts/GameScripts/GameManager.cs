@@ -165,12 +165,14 @@ public class GameManager : MonoBehaviour
         // Deactivate the current gun script
         if (gunScripts[currentWeaponIndex] != null) {
             gunScripts[currentWeaponIndex].enabled = false;
+            gunScripts[currentWeaponIndex].ReloadPopUp(gunScripts[currentWeaponIndex].reloadText, gunScripts[currentWeaponIndex].rButton, gunScripts[currentWeaponIndex].rText); // Hide reload UI for current gun
         }
         
         // Activate the new gun script
         currentWeaponIndex = index;
         gunIcon.GetComponent<Image>().sprite = gunScripts[currentWeaponIndex].icon;
         gunScripts[currentWeaponIndex].enabled = true;
+        gunScripts[currentWeaponIndex].ReloadPopUp(gunScripts[currentWeaponIndex].reloadText, gunScripts[currentWeaponIndex].rButton, gunScripts[currentWeaponIndex].rText); // Show reload UI for new gun if needed
         UpdateAmmo();
 
     }

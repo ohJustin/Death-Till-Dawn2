@@ -292,6 +292,7 @@ MonoBehaviour:
   ammoLeftTotal: 2147483647
   ammoInClip: 17
   pistolAudio: {fileID: 0}
+  pistolReloadAudio: {fileID: 0}
   magazineSize: 17
   reloadTime: 0.75
   icon: {fileID: 21300000, guid: 3131695212780dd449347cc66992c189, type: 3}
@@ -319,6 +320,7 @@ MonoBehaviour:
   ammoLeftTotal: 385
   ammoInClip: 35
   pistolAudio: {fileID: 0}
+  pistolReloadAudio: {fileID: 0}
   magazineSize: 35
   reloadTime: 2
   icon: {fileID: 21300000, guid: 0933448569a971440abcc39c95b1bae8, type: 3}
@@ -328,6 +330,7 @@ MonoBehaviour:
   rButton: {fileID: 0}
   rText: {fileID: 0}
   machineGunAudio: {fileID: 0}
+  machineGunReloadAudio: {fileID: 0}
 --- !u!114 &1980654624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +350,9 @@ MonoBehaviour:
   ammoLeftTotal: 60
   ammoInClip: 2
   pistolAudio: {fileID: 0}
+  pistolReloadAudio: {fileID: 0}
   magazineSize: 2
-  reloadTime: 1
+  reloadTime: 2
   icon: {fileID: 21300000, guid: 3d6c291d7c427b049ade90973ae2defc, type: 3}
   magazineSizeText: {fileID: 0}
   magazineCountText: {fileID: 0}
@@ -359,6 +363,7 @@ MonoBehaviour:
   _spreadAngle: 30
   _shotgunCooldown: 0.5
   shotgunAudio: {fileID: 0}
+  shotgunReloadAudio: {fileID: 0}
 --- !u!114 &1196275359
 MonoBehaviour:
   m_ObjectHideFlags: 0
