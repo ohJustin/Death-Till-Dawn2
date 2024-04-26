@@ -13,6 +13,9 @@ public class ShotGun : PlayerShoot
 
     protected override void Update()
     {
+        if(gm.isPaused == true) {
+            return;
+        }
         // Check for shotgun input
         if (IsFireButtonDown() && _canFire && haveAmmo)
         {   
