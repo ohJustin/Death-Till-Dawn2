@@ -22,9 +22,7 @@ public class Shooter : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if(enemyHealth.Health == 0) {
-            SceneManager.LoadScene(4);
-        }        
+              
     }
 
     private void OnTriggerEnter2D(Collider2D collision){

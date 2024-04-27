@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Bullet : MonoBehaviour
                 if(collision.gameObject.GetComponent<Boomer>()) {
                     collision.gameObject.GetComponent<Boomer>().Boom();
                 }
+                else if(collision.gameObject.GetComponent<Shooter>()) {
+                    SceneManager.LoadScene(4);
+                }  
                 collision.gameObject.GetComponent<EnemyBase>().IncreaseDiff();
                 GameManager.gameManager.IncrementKill();
                 Destroy(collision.gameObject);
