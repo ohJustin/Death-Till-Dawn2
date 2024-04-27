@@ -16,6 +16,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] public int ammoLeftTotal;
     [SerializeField] public int ammoInClip;
     [SerializeField] AudioSource pistolAudio;
+    [SerializeField] AudioSource pistolReloadAudio;
 
     [SerializeField] protected int magazineSize;
 
@@ -25,9 +26,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI magazineSizeText;
     [SerializeField] protected TextMeshProUGUI magazineCountText;
 
-    [SerializeField] protected TextMeshProUGUI reloadText;
-    [SerializeField] protected Button rButton;
-    [SerializeField] protected TextMeshProUGUI rText;
+    [SerializeField] public TextMeshProUGUI reloadText;
+    [SerializeField] public Button rButton;
+    [SerializeField] public TextMeshProUGUI rText;
 
     protected float _lastFireTime;
 
@@ -64,6 +65,11 @@ public class PlayerShoot : MonoBehaviour
             UpdateButtonOpacity(KeyCode.R, rButton);
             Reload();
         }
+
+        // if (isReloading == true) {
+        //     pistolReloadAudio.Play();
+        // }
+        
     }
 
     protected void FireBullet()
@@ -85,10 +91,11 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    protected void Reload() {
-        // Call ReloadPopUp function
+    protected virtual void Reload() {
+        // Show ReloadPopUp
         ReloadPopUp(reloadText, rButton, rText);
         if(Input.GetKeyDown(KeyCode.R) && !isReloading) {
+            pistolReloadAudio.Play();
             isReloading = true;
             startTime = Time.time;
             Debug.Log("Player is now reloading...");
@@ -99,6 +106,7 @@ public class PlayerShoot : MonoBehaviour
                 ammoInClip = magazineSize;
                 ammoLeftTotal -= magazineSize;
                 isReloading = false;
+                // Hide ReloadPopUp
                 ReloadPopUp(reloadText, rButton, rText);
             }
 
@@ -107,7 +115,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
 
-    protected void ReloadPopUp(TextMeshProUGUI text, Button button, TextMeshProUGUI textButton)
+    public void ReloadPopUp(TextMeshProUGUI text, Button button, TextMeshProUGUI textButton)
     {
         if (haveAmmo == false)
         {

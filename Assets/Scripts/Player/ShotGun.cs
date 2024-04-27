@@ -9,10 +9,15 @@ public class ShotGun : PlayerShoot
     [SerializeField] private float _spreadAngle = 30f; // Angle of bullet spread
     [SerializeField] private float _shotgunCooldown = 0.5f; // Cooldown period for the shotgun
     [SerializeField] AudioSource shotgunAudio;
+    [SerializeField] AudioSource shotgunReloadAudio;
     private bool _canFire = true;
 
     protected override void Update()
     {
+        // if (isReloading == true) {
+        //     shotgunReloadAudio.Play();
+        // }
+
         if(gm.isPaused == true) {
             return;
         }
@@ -25,11 +30,35 @@ public class ShotGun : PlayerShoot
             Invoke("ResetFire", _shotgunCooldown); // Reset fire after cooldown
             UpdateAmmo();
         }
-        
+
         if (haveAmmo == false) {
             UpdateButtonOpacity(KeyCode.R, rButton);
             Reload();
         }
+
+    }
+
+    protected override void Reload() {
+        // Show ReloadPopUp
+        ReloadPopUp(reloadText, rButton, rText);
+        if(Input.GetKeyDown(KeyCode.R) && !isReloading) {
+            shotgunReloadAudio.Play();
+            isReloading = true;
+            startTime = Time.time;
+            Debug.Log("Player is now reloading...");
+        }
+        if (isReloading) {
+            if (Time.time - startTime > reloadTime) {
+                haveAmmo = true;
+                ammoInClip = magazineSize;
+                ammoLeftTotal -= magazineSize;
+                isReloading = false;
+                // Hide ReloadPopUp
+                ReloadPopUp(reloadText, rButton, rText);
+            }
+
+        }
+
     }
 
     private void ResetFire()
