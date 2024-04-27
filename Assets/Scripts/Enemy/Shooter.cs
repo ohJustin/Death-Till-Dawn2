@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Shooter : EnemyBase
@@ -11,7 +12,7 @@ public class Shooter : EnemyBase
     [SerializeField] private float throwDist = 5f;
     override protected void Start()
     {
-        maxHealth = 400;
+        maxHealth = 300;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         enemyHealth = new HealthSystem(maxHealth, maxHealth);
         enemyHealthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponentInChildren<HealthBar>();
@@ -21,7 +22,9 @@ public class Shooter : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        
+        if(enemyHealth.Health == 0) {
+            SceneManager.LoadScene(4);
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
@@ -32,6 +35,4 @@ public class Shooter : EnemyBase
             temp.isThrown = true;
         }
     }
-
-
 }

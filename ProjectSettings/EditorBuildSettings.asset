@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BOSSFIGHT.unity
     guid: d8aee6542d22b144a93f16cf29d00d67
+  - enabled: 1
+    path: Assets/Scenes/Menus/Win.unity
+    guid: 4f69bf0971a7d7141ac049f8d40291a5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5d5ef7ba79a007346b8e31b8aea28447, type: 2}
