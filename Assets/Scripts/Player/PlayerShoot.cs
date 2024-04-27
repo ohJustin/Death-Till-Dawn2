@@ -34,6 +34,8 @@ public class PlayerShoot : MonoBehaviour
 
     protected bool haveAmmo = true;
 
+    protected bool noAmmoLeft = false;
+
     protected float startTime;
     protected bool isReloading;
 
@@ -54,7 +56,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) // Check for left mouse button or spacebar press
         {
-            if (Time.time - _lastFireTime >= _timeBetweenShots && haveAmmo)
+            if (Time.time - _lastFireTime >= _timeBetweenShots && haveAmmo && noAmmoLeft == false)
             {
                 pistolAudio.Play();
                 FireBullet();
@@ -62,7 +64,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
         if (haveAmmo == false) {
-            UpdateButtonOpacity(KeyCode.R, rButton);
+            //UpdateButtonOpacity(KeyCode.R, rButton);
             Reload();
         }
 
@@ -84,6 +86,7 @@ public class PlayerShoot : MonoBehaviour
         ammoInClip--;
         if(ammoLeftTotal == 0 && ammoInClip == 0) {
             haveAmmo = false;
+            noAmmoLeft = true;
             return;
         }
         else if (ammoInClip == 0) {
@@ -92,6 +95,9 @@ public class PlayerShoot : MonoBehaviour
     }
 
     protected virtual void Reload() {
+        if(noAmmoLeft) {
+            return;
+        }
         // Show ReloadPopUp
         ReloadPopUp(reloadText, rButton, rText);
         if(Input.GetKeyDown(KeyCode.R) && !isReloading) {

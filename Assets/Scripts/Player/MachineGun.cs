@@ -16,7 +16,7 @@ public class MachineGun : PlayerShoot
         if(gm.isPaused == true) {
             return;
         }
-        if(_fireContinously && haveAmmo){
+        if(_fireContinously && haveAmmo && noAmmoLeft == false){
             float timeSinceLastFire = Time.time - _lastFireTime; // Fix close shot bullets.
 
             if(timeSinceLastFire >= _timeBetweenShots) {
@@ -27,7 +27,7 @@ public class MachineGun : PlayerShoot
             }
         }
         if (haveAmmo == false) {
-            UpdateButtonOpacity(KeyCode.R, rButton);
+            //UpdateButtonOpacity(KeyCode.R, rButton);
             Reload();
         }
 
@@ -37,6 +37,9 @@ public class MachineGun : PlayerShoot
     }
 
     protected override void Reload() {
+        if(noAmmoLeft) {
+            return;
+        }
         // Show ReloadPopUp
         ReloadPopUp(reloadText, rButton, rText);
         if(Input.GetKeyDown(KeyCode.R) && !isReloading) {

@@ -22,7 +22,7 @@ public class ShotGun : PlayerShoot
             return;
         }
         // Check for shotgun input
-        if (IsFireButtonDown() && _canFire && haveAmmo)
+        if (IsFireButtonDown() && _canFire && haveAmmo && noAmmoLeft == false)
         {   
             shotgunAudio.Play();
             Fire();
@@ -32,13 +32,16 @@ public class ShotGun : PlayerShoot
         }
 
         if (haveAmmo == false) {
-            UpdateButtonOpacity(KeyCode.R, rButton);
+            //UpdateButtonOpacity(KeyCode.R, rButton);
             Reload();
         }
 
     }
 
     protected override void Reload() {
+        if(noAmmoLeft) {
+            return;
+        }
         // Show ReloadPopUp
         ReloadPopUp(reloadText, rButton, rText);
         if(Input.GetKeyDown(KeyCode.R) && !isReloading) {

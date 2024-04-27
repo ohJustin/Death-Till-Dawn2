@@ -4522,6 +4522,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2053634959}
     - target: {fileID: 1980654624, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
+      propertyPath: reloadTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980654624, guid: 9d19b732d0186a8419682ac5fec1f27e, type: 3}
       propertyPath: shotgunAudio
       value: 
       objectReference: {fileID: 1143523411104323285}

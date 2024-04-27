@@ -12,7 +12,7 @@ public class Shooter : EnemyBase
     [SerializeField] private float throwDist = 5f;
     override protected void Start()
     {
-        maxHealth = 300;
+        maxHealth = 200;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         enemyHealth = new HealthSystem(maxHealth, maxHealth);
         enemyHealthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponentInChildren<HealthBar>();
