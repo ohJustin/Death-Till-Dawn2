@@ -8,6 +8,7 @@ TagManager:
   - GUN
   - Wall
   - Reload
+  - BossHealth
   layers:
   - Default
   - TransparentFX

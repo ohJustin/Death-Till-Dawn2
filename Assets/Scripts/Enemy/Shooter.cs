@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Shooter : MonoBehaviour
+public class Shooter : EnemyBase
 {
     // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private float throwDist = 5f;
+    override protected void Start()
     {
-        
+        maxHealth = 400;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        enemyHealth = new HealthSystem(maxHealth, maxHealth);
+        enemyHealthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponentInChildren<HealthBar>();
+        enemyHealthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -15,4 +23,15 @@ public class Shooter : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.GetComponent<EnemyMovement>()){
+            EnemyMovement temp = collision.GetComponent<EnemyMovement>();
+            Debug.Log("Here");
+            temp.endPos = new Vector3(collision.transform.position.x + (transform.up.x * throwDist), collision.transform.position.y + (transform.up.y * throwDist), collision.transform.position.z);
+            temp.isThrown = true;
+        }
+    }
+
+
 }

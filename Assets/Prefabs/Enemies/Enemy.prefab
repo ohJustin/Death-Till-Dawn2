@@ -205,6 +205,7 @@ MonoBehaviour:
   dmg: 5
   enemyHealthBar: {fileID: 0}
   gm: {fileID: 0}
+  dead: 0
 --- !u!95 &888638941532868111
 Animator:
   serializedVersion: 5
@@ -409,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761796280697439203, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8761796281908604210, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -416,6 +421,10 @@ PrefabInstance:
     - target: {fileID: 8761796282219149851, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761796282219149851, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d5d8fe0be20e2346907212b909c34d9, type: 3}

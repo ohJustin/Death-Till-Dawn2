@@ -5,17 +5,21 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _speed; // Enemy speed.
+    protected float _speed; // Enemy speed.
     [SerializeField]    
-    private float _rotationSpeed; // Enemy rotation speed.
+    protected float _rotationSpeed; // Enemy rotation speed.
 
-    private Rigidbody2D _rigidbody; // Enemy rigidbody.
-    private PlayerAwarenessController _playerAwarenessController; // Go to 'PlayerAwarenessController' class.
-    private Vector2 _targetDirection;
-    private float _changeDirectionCooldown; // amount of time remaining until next direction change
+    protected Rigidbody2D _rigidbody; // Enemy rigidbody.
+    protected PlayerAwarenessController _playerAwarenessController; // Go to 'PlayerAwarenessController' class.
+    protected Vector2 _targetDirection;
+    protected float _changeDirectionCooldown; // amount of time remaining until next direction change
+    public Vector3 endPos;
+
+
+    public bool isThrown = false;
 
     // Start is called before the first frame update
-    private void Awake(){
+    protected void Awake(){
 
         // Gets rigid2D body component and assigns it the field.
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -29,21 +33,26 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    private void FixedUpdate(){
+    virtual protected void FixedUpdate(){
+
+        if(isThrown) {
+            Thrown();
+            return;
+        }
 
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
     }
 
-    private void UpdateTargetDirection(){
+    protected void UpdateTargetDirection(){
         // Wander randomly unless detects player
         HandleRandomDirectionChange();
         HandlePlayerTargeting();
         
     }
 
-    private void HandleRandomDirectionChange() {
+    protected void HandleRandomDirectionChange() {
         _changeDirectionCooldown -= Time.deltaTime;
         // If cool down is complete
         if (_changeDirectionCooldown <= 0) {
@@ -56,13 +65,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void HandlePlayerTargeting() {
+    protected void HandlePlayerTargeting() {
         if(_playerAwarenessController.AwareOfPlayer){
             _targetDirection = _playerAwarenessController.DirectionToPlayer;
         }
     }
 
-    private void RotateTowardsTarget(){
+    protected void RotateTowardsTarget(){
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation,  targetRotation, _rotationSpeed * Time.deltaTime);
         
@@ -70,8 +79,17 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody.SetRotation(rotation);
     }
 
-    private void SetVelocity(){
+    protected void SetVelocity(){
         _rigidbody.velocity = transform.up * _speed;
     }
 
+    protected void Thrown() {
+        if(transform.position.x - endPos.x > .1f || transform.position.x - endPos.x < -.1f) {
+            transform.position = Vector3.MoveTowards(transform.position, endPos, 0.5f);
+            Debug.Log("throw");
+        }
+        else {
+            isThrown = false;
+        }
+    }
 }

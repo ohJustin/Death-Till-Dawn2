@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magazineSizeText;
     [SerializeField] private TextMeshProUGUI magazineCountText;
 
+    [SerializeField] private TextMeshProUGUI endGameText;
+
     [SerializeField] private Button qButton;
     [SerializeField] private Button eButton;
     public GameObject pauseWindow;
@@ -36,6 +40,11 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private WeaponUI weaponUI;
 
     private float timer = 0f; // Timer variable to hold the elapsed time
+
+    private bool flashIncreasing = false;
+    [SerializeField] private float flashInc = 0.1f;
+
+    [SerializeField] private int endGameKillCount = 10;
 
     public int ScoreCounter {
         get {
@@ -54,6 +63,7 @@ public class GameManager : MonoBehaviour
       //optionsWindow = GameObject.Find("OptionsWindow");
       pauseWindow.SetActive(false);
       isPaused = false;
+      endGameText.enabled = false;
     }
 
     void Awake()
@@ -119,6 +129,12 @@ public class GameManager : MonoBehaviour
 
         UpdateScoreUI();
         UpdateAmmo();
+
+        if(endGameKillCount - killCounter <= 10) {
+            endGameText.enabled = true;
+             UpdateEndGame();
+        }
+       
    
         // Check for input to switch weapons
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -221,6 +237,42 @@ public class GameManager : MonoBehaviour
             magazineCountText.text = gunScripts[currentWeaponIndex].ammoLeftTotal.ToString();
             magazineSizeText.text = gunScripts[currentWeaponIndex].ammoInClip.ToString();
         }
+    }
+
+    private void UpdateEndGame() {
+        if(flashIncreasing) {
+            Color temp = endGameText.color;
+            temp.a += flashInc;
+            if(temp.a > 1) {
+                flashIncreasing = false;
+                return;
+            }
+            else {
+                endGameText.color = temp;
+            }
+        }
+        else {
+            Color temp = endGameText.color;
+            temp.a -= flashInc;
+            if(temp.a < 0) {
+                flashIncreasing = true;
+                return;
+            }
+            else {
+                endGameText.color = temp;
+            }
+        }
+
+        endGameText.text = "Kills Remaining: " + (endGameKillCount - killCounter).ToString();
+
+        if(endGameKillCount - killCounter == 0) {
+            endGameText.text = "INCOMING!!!";
+            Invoke("LoadBoss", 2);
+        }
+    }
+
+    private void LoadBoss() {
+        SceneManager.LoadScene(3);
     }
 }
 

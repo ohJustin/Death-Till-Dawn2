@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/DeathMenu.unity
     guid: 5bf7e52f6339b2d4bbe1fb35f029dab0
+  - enabled: 1
+    path: Assets/Scenes/BOSSFIGHT.unity
+    guid: d8aee6542d22b144a93f16cf29d00d67
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5d5ef7ba79a007346b8e31b8aea28447, type: 2}
